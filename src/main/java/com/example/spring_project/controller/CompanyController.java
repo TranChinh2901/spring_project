@@ -70,11 +70,13 @@ public class CompanyController {
             return ResponseEntity.badRequest().build();
         }
     }
+
     @GetMapping("/with-users")
     public ResponseEntity<List<Company>> getCompaniesWithUsers() {
         List<Company> companies = companyService.getCompaniesWithUsers();
         return ResponseEntity.ok(companies);
     }
+
     @GetMapping("/{id}/user-count")
     public ResponseEntity<Long> getUserCountByCompany(@PathVariable Long id) {
         try {

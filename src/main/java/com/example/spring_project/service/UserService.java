@@ -38,7 +38,7 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy user với ID: " + id));
 
-      
+
         if (!user.getEmail().equals(userDetails.getEmail()) &&
                 userRepository.existsByEmail(userDetails.getEmail())) {
             throw new RuntimeException("Email đã tồn tại: " + userDetails.getEmail());
