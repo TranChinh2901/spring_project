@@ -13,7 +13,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) 
+                .csrf(csrf -> csrf.disable()) //Tắt các tính năng tạo request giả mạo đến từ người dùng  để có thể nhận POST/PUT/DELETE
                 .authorizeHttpRequests(authz -> authz
                         .anyRequest().permitAll() //allow all, don't require authentication
                 );
