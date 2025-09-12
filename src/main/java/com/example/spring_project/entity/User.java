@@ -28,6 +28,11 @@ public class User {
     @Column
     private String address;
 
+
+    @NotBlank(message = "Password không được để trống")
+    @Column(nullable = false)
+    private String password;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
@@ -35,10 +40,19 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email, String phone) {
+
+    public User(String name, String email, String phone, String password) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.password = password;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
@@ -97,6 +111,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", password='[PROTECTED]'" +
                 '}';
     }
 }
